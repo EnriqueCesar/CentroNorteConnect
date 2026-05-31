@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Regional Review | Centro Norte</title>
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
 
 body{
@@ -44,7 +46,7 @@ body{
     gap:15px;
     flex-wrap:wrap;
     justify-content:center;
-    margin-bottom:25px;
+    margin-bottom:18px;
 }
 
 .kpi{
@@ -54,6 +56,22 @@ body{
     box-shadow:0 4px 15px rgba(0,0,0,.08);
     font-weight:bold;
     color:#00704A;
+}
+
+.periodo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.periodo span{
+    display:inline-block;
+    background:#eef7f3;
+    color:#00704A;
+    padding:10px 20px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:700;
+    border:1px solid #d7ebe2;
 }
 
 .grid{
@@ -84,9 +102,12 @@ body{
     text-align:center;
 }
 
-.mapa img{
+#mapaRegional{
     width:100%;
-    border-radius:12px;
+    height:420px;
+    border-radius:14px;
+    margin-top:15px;
+    overflow:hidden;
 }
 
 .btn{
@@ -116,11 +137,13 @@ body{
     font-size:32px;
 }
 
+#mapaRegional{
+    height:360px;
+}
+
 }
 
 </style>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -149,15 +172,21 @@ body{
 
     </div>
 
+    <div class="periodo">
+        <span>📅 Corte Ejecutivo YTD · Enero – Abril 2026</span>
+    </div>
+
     <div class="grid">
 
         <div class="card mapa">
 
             <h2>📍 Cobertura Regional</h2>
 
-            <p>
-                Inserta aquí tu imagen principal de la región.
+            <p style="color:#666;font-size:14px;">
+                Portafolios por DM · Región Centro Norte
             </p>
+
+            <div id="mapaRegional"></div>
 
         </div>
 
@@ -226,6 +255,52 @@ body{
     </div>
 
 </div>
+
+<script>
+
+var mapa = L.map('mapaRegional').setView([19.54,-99.18],10);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'© OpenStreetMap'
+}).addTo(mapa);
+
+L.marker([19.64697760988644,-99.20715190398433])
+.addTo(mapa)
+.bindPopup('<b>Izcalli Mega</b><br>DM: Enrique');
+
+L.marker([19.670907256797065,-99.20315595767177])
+.addTo(mapa)
+.bindPopup('<b>San Marcos</b><br>DM: Enrique');
+
+L.marker([19.657409844647916,-99.21026354232822])
+.addTo(mapa)
+.bindPopup('<b>Luna Park</b><br>DM: Enrique');
+
+L.marker([19.628726747313067,-99.12410375767182])
+.addTo(mapa)
+.bindPopup('<b>Coacalco</b><br>DM: Enrique');
+
+L.marker([19.63640228103232,-99.09608838684989])
+.addTo(mapa)
+.bindPopup('<b>Plaza Las Flores</b><br>DM: Enrique');
+
+L.marker([19.606304666961204,-99.0459673865077])
+.addTo(mapa)
+.bindPopup('<b>Patio Ecatepec</b><br>DM: Enrique');
+
+L.marker([19.632055752582385,-99.1257806])
+.addTo(mapa)
+.bindPopup('<b>Cosmopol</b><br>DM: Enrique');
+
+L.marker([19.632072034272348,-99.12441873300072])
+.addTo(mapa)
+.bindPopup('<b>Cosmopol N1</b><br>DM: Enrique');
+
+L.marker([19.688366847575164,-99.21400635767179])
+.addTo(mapa)
+.bindPopup('<b>San Miguel Izcalli</b><br>DM: Enrique');
+
+</script>
 
 </body>
 </html>
