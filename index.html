@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,53 +7,177 @@
 
 <style>
 body{
+    margin:0;
     font-family: Arial, sans-serif;
-    background:#f5f5f5;
+    background:linear-gradient(135deg,#f4f4f4,#e8f3ee);
     text-align:center;
-    padding:40px;
+    color:#1e1e1e;
 }
-.logo{
-    font-size:32px;
-    margin-bottom:10px;
-}
-.card{
-    background:white;
-    max-width:500px;
-    margin:20px auto;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 2px 10px rgba(0,0,0,.15);
-}
-.btn{
-    display:block;
+
+.hero{
     background:#00704A;
     color:white;
+    padding:45px 20px 35px;
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin:10px 0;
+}
+
+.hero p{
+    font-size:20px;
+    margin:8px 0;
+}
+
+.tagline{
+    font-size:17px;
+    opacity:.95;
+}
+
+.hashtags{
+    margin-top:15px;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:850px;
+    margin:-30px auto 40px;
+    padding:0 20px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:24px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.kpis{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.kpi{
+    background:#f1f8f5;
+    color:#00704A;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:bold;
+}
+
+.option{
+    display:block;
     text-decoration:none;
-    padding:15px;
-    margin:15px 0;
-    border-radius:10px;
-    font-size:18px;
+    color:#1e1e1e;
+    background:#f8f8f8;
+    margin:18px 0;
+    padding:22px;
+    border-radius:18px;
+    border:2px solid transparent;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#00704A;
+    transform:scale(1.02);
+}
+
+.icon{
+    font-size:34px;
+}
+
+.option h2{
+    margin:8px 0 5px;
+    color:#00704A;
+    font-size:24px;
+}
+
+.option p{
+    margin:0;
+    font-size:16px;
+    color:#555;
+}
+
+.footer{
+    margin-top:25px;
+    font-size:14px;
+    color:#666;
+    line-height:1.6;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:32px;
+    }
+    .card{
+        padding:25px 18px;
+    }
 }
 </style>
-
 </head>
+
 <body>
 
-<h1>📍 Centro Norte Connect</h1>
-<p>Selecciona la vista que deseas consultar</p>
+<div class="hero">
+    <div style="font-size:45px;">📍</div>
+    <h1>Centro Norte Connect</h1>
 
-<div class="card">
+    <p>🚀 Navega. Analiza. Decide.</p>
 
-<a class="btn"
-href="https://www.google.com/maps/d/viewer?mid=1qJtSehevuovcJfWayveTAnfQ9rFEdVM&ll=19.55483070376722%2C-99.17139930825385&z=11">
-🗺️ Google Maps Interactivo
-</a>
+    <div class="tagline">
+        Conectando tiendas, partners y decisiones para una ejecución consistente.
+    </div>
 
-<a class="btn"
-href="https://enriquecesar.github.io/Mapa_CentroNorte/">
-📊 Mapa Ejecutivo
-</a>
+    <div class="hashtags">
+        💚 #OrgulloCN &nbsp;&nbsp;|&nbsp;&nbsp; ☕ #GreenApronService
+    </div>
+</div>
 
+<div class="container">
+    <div class="card">
+
+        <div class="kpis">
+            <div class="kpi">🟢 Región Centro Norte</div>
+            <div class="kpi">🏪 72 Tiendas</div>
+            <div class="kpi">👥 6 Distritos</div>
+        </div>
+
+        <a class="option"
+        href="https://www.google.com/maps/d/viewer?mid=1qJtSehevuovcJfWayveTAnfQ9rFEdVM&ll=19.55483070376722%2C-99.17139930825385&z=11">
+            <div class="icon">🗺️</div>
+            <h2>Vista Operativa</h2>
+            <p>Google Maps interactivo para ubicación, cobertura y navegación.</p>
+        </a>
+
+        <a class="option"
+        href="https://enriquecesar.github.io/Mapa_CentroNorte/">
+            <div class="icon">📊</div>
+            <h2>Vista Ejecutiva</h2>
+            <p>Mapa ejecutivo para análisis regional y ruta de decisiones.</p>
+        </a>
+
+        <div class="footer">
+            <strong>
+                💚 #OrgulloCN &nbsp;&nbsp;|&nbsp;&nbsp; ☕ #GreenApronService
+            </strong>
+
+            <br><br>
+
+            Conectando tiendas, partners y decisiones.
+
+            <br><br>
+
+            Starbucks Centro Norte · One Region · One Route · One Decision
+        </div>
+
+    </div>
 </div>
 
 </body>
