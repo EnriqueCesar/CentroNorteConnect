@@ -261,44 +261,99 @@ body{
 var mapa = L.map('mapaRegional').setView([19.54,-99.18],10);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'© OpenStreetMap'
-}).addTo(mapa);
+    attribution:'&copy; OpenStreetMap'
+}).addTo(map);
 
-L.marker([19.64697760988644,-99.20715190398433])
-.addTo(mapa)
-.bindPopup('<b>Izcalli Mega</b><br>DM: Enrique');
+/* ENRIQUE */
+L.marker([19.6469,-99.2071]).addTo(map)
+.bindPopup(`
+<b>🟢 Enrique César</b><br>
+9 Tiendas<br><br>
+38333 Izcalli Mega<br>
+38339 San Marcos<br>
+38368 Luna Park<br>
+38401 Coacalco<br>
+38456 Plaza Las Flores<br>
+38515 Patio Ecatepec<br>
+38604 Cosmopol<br>
+38862 San Miguel Izcalli<br>
+43193 Cosmopol N1
+`);
 
-L.marker([19.670907256797065,-99.20315595767177])
-.addTo(mapa)
-.bindPopup('<b>San Marcos</b><br>DM: Enrique');
+/* NANCY */
+L.marker([19.5599,-99.2201]).addTo(map)
+.bindPopup(`
+<b>🔵 Nancy</b><br>
+13 Tiendas<br><br>
+Punta Norte<br>
+Arboledas<br>
+Valle Dorado<br>
+Sor Juana<br>
+Santa Mónica<br>
+Mundo E<br>
+Jinetes<br>
+Galerías Perinorte<br>
+y más...
+`);
 
-L.marker([19.657409844647916,-99.21026354232822])
-.addTo(mapa)
-.bindPopup('<b>Luna Park</b><br>DM: Enrique');
+/* HAYDEE */
+L.marker([19.5491,-99.2744]).addTo(map)
+.bindPopup(`
+<b>🟢 Haydee</b><br>
+13 Tiendas<br><br>
+Zona Azul<br>
+Lomas Verdes<br>
+Zona Esmeralda<br>
+Bellavista<br>
+San Mateo<br>
+Galerías Atizapán<br>
+Star Médica<br>
+Town Center Nicolás Romero<br>
+y más...
+`);
 
-L.marker([19.628726747313067,-99.12410375767182])
-.addTo(mapa)
-.bindPopup('<b>Coacalco</b><br>DM: Enrique');
+/* VANESSA */
+L.marker([19.4864,-99.1306]).addTo(map)
+.bindPopup(`
+<b>🟠 Vanessa</b><br>
+14 Tiendas<br><br>
+Lindavista<br>
+Lindavista II<br>
+Montevideo DT<br>
+Patio Clavería<br>
+Vía Vallejo<br>
+Plaza Fortuna<br>
+Atana Lindavista<br>
+y más...
+`);
 
-L.marker([19.63640228103232,-99.09608838684989])
-.addTo(mapa)
-.bindPopup('<b>Plaza Las Flores</b><br>DM: Enrique');
+/* VERÓNICA */
+L.marker([19.4401,-99.0941]).addTo(map)
+.bindPopup(`
+<b>🔴 Verónica</b><br>
+10 Tiendas<br><br>
+Encuentro Oceanía<br>
+Plaza Aeropuerto<br>
+Parque Tepeyac<br>
+TAPO<br>
+Bosques de Aragón<br>
+y más...
+`);
 
-L.marker([19.606304666961204,-99.0459673865077])
-.addTo(mapa)
-.bindPopup('<b>Patio Ecatepec</b><br>DM: Enrique');
-
-L.marker([19.632055752582385,-99.1257806])
-.addTo(mapa)
-.bindPopup('<b>Cosmopol</b><br>DM: Enrique');
-
-L.marker([19.632072034272348,-99.12441873300072])
-.addTo(mapa)
-.bindPopup('<b>Cosmopol N1</b><br>DM: Enrique');
-
-L.marker([19.688366847575164,-99.21400635767179])
-.addTo(mapa)
-.bindPopup('<b>San Miguel Izcalli</b><br>DM: Enrique');
+/* YAZMÍN CHABELA */
+L.marker([19.5106,-99.2333]).addTo(map)
+.bindPopup(`
+<b>🟣 Yazmín Chabela</b><br>
+13 Tiendas<br><br>
+Satélite<br>
+Periférico Satélite DT<br>
+Echegaray<br>
+Plaza Satélite<br>
+El Rosario<br>
+Parque Toreo<br>
+4 Caminos<br>
+y más...
+`);
 
 </script>
 
