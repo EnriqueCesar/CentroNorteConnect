@@ -10,7 +10,6 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <style>
-
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -110,6 +109,23 @@ body{
     overflow:hidden;
 }
 
+.leyenda{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:12px;
+    font-size:12px;
+    color:#444;
+}
+
+.leyenda span{
+    background:#f1f8f5;
+    padding:6px 10px;
+    border-radius:12px;
+    font-weight:600;
+}
+
 .btn{
     display:inline-block;
     background:#00704A;
@@ -142,34 +158,23 @@ body{
 }
 
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="header">
-
     <h1>📈 Regional Review</h1>
-
-    <p>
-        Región Centro Norte · Dashboard Ejecutivo
-    </p>
-
+    <p>Región Centro Norte · Dashboard Ejecutivo</p>
 </div>
 
 <div class="container">
 
     <div class="kpis">
-
         <div class="kpi">🏪 72 Tiendas</div>
-
         <div class="kpi">👥 6 Distritos</div>
-
         <div class="kpi">🚗 5 Drive Thru</div>
-
         <div class="kpi">📍 CDMX + Edo. Mex.</div>
-
     </div>
 
     <div class="periodo">
@@ -188,50 +193,39 @@ body{
 
             <div id="mapaRegional"></div>
 
+            <div class="leyenda">
+                <span>🟢 Enrique</span>
+                <span>🔵 Nancy</span>
+                <span>🟣 Chabela</span>
+                <span>🟠 Vanessa</span>
+                <span>🔴 Verónica</span>
+                <span>🟩 Haydee</span>
+            </div>
+
         </div>
 
         <div class="card">
-
             <h2>👥 Partner</h2>
-
             <div class="big-number">34.1%</div>
-
-            <p>
-                Rolling
-            </p>
-
+            <p>Rolling</p>
             <hr>
-
             <p>TPLH: 6.4</p>
-
             <p>IPLH: 15.1</p>
-
             <p>Labor: 15.5%</p>
-
         </div>
 
         <div class="card">
-
             <h2>💚 Cliente</h2>
-
             <p>NPS: 69.4</p>
-
             <p>Conexión: 50.9%</p>
-
             <p>Bebida: 61.0%</p>
-
         </div>
 
         <div class="card">
-
             <h2>💰 Negocio</h2>
-
             <p>CTC: 10.8%</p>
-
             <p>EBITDA: 21.7%</p>
-
             <p>DT Time: 01:26</p>
-
         </div>
 
     </div>
@@ -249,23 +243,39 @@ body{
     </div>
 
     <div class="footer">
-
         Starbucks Centro Norte · Una Región · Una Ruta · Una Decisión
-
     </div>
 
 </div>
 
 <script>
 
-var mapa = L.map('mapaRegional').setView([19.54,-99.18],10);
+var mapa = L.map('mapaRegional');
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution:'&copy; OpenStreetMap'
-}).addTo(map);
+}).addTo(mapa);
+
+function crearIcono(color){
+    return L.divIcon({
+        className:'',
+        html:'<div style="background:'+color+';width:22px;height:22px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,.35);"></div>',
+        iconSize:[22,22],
+        iconAnchor:[11,11]
+    });
+}
+
+var iconEnrique = crearIcono('#00704A');
+var iconNancy = crearIcono('#2563EB');
+var iconChabela = crearIcono('#7C3AED');
+var iconVanessa = crearIcono('#F97316');
+var iconVero = crearIcono('#DC2626');
+var iconHaydee = crearIcono('#22C55E');
+
+var puntos = [];
 
 /* ENRIQUE */
-L.marker([19.6469,-99.2071]).addTo(map)
+var enrique = L.marker([19.6320,-99.1257],{icon:iconEnrique}).addTo(mapa)
 .bindPopup(`
 <b>🟢 Enrique César</b><br>
 9 Tiendas<br><br>
@@ -279,81 +289,121 @@ L.marker([19.6469,-99.2071]).addTo(map)
 38862 San Miguel Izcalli<br>
 43193 Cosmopol N1
 `);
+puntos.push(enrique);
 
 /* NANCY */
-L.marker([19.5599,-99.2201]).addTo(map)
+var nancy = L.marker([19.5599,-99.2201],{icon:iconNancy}).addTo(mapa)
 .bindPopup(`
 <b>🔵 Nancy</b><br>
 13 Tiendas<br><br>
-Punta Norte<br>
-Arboledas<br>
-Valle Dorado<br>
-Sor Juana<br>
-Santa Mónica<br>
-Mundo E<br>
-Jinetes<br>
-Galerías Perinorte<br>
-y más...
+38136 Punta Norte<br>
+38186 Arboledas<br>
+38230 ITEMS Edo de México<br>
+38374 Valle Dorado<br>
+38442 Sor Juana<br>
+38460 Santa Mónica<br>
+38606 Tlalnepantla Carso<br>
+38661 Jinetes<br>
+38674 Mundo E<br>
+38694 Villas de la Hacienda<br>
+38792 Pasaje Tlalnepantla<br>
+38845 Mundo E II<br>
+38894 Galerías Perinorte
 `);
+puntos.push(nancy);
 
-/* HAYDEE */
-L.marker([19.5491,-99.2744]).addTo(map)
-.bindPopup(`
-<b>🟢 Haydee</b><br>
-13 Tiendas<br><br>
-Zona Azul<br>
-Lomas Verdes<br>
-Zona Esmeralda<br>
-Bellavista<br>
-San Mateo<br>
-Galerías Atizapán<br>
-Star Médica<br>
-Town Center Nicolás Romero<br>
-y más...
-`);
-
-/* VANESSA */
-L.marker([19.4864,-99.1306]).addTo(map)
-.bindPopup(`
-<b>🟠 Vanessa</b><br>
-14 Tiendas<br><br>
-Lindavista<br>
-Lindavista II<br>
-Montevideo DT<br>
-Patio Clavería<br>
-Vía Vallejo<br>
-Plaza Fortuna<br>
-Atana Lindavista<br>
-y más...
-`);
-
-/* VERÓNICA */
-L.marker([19.4401,-99.0941]).addTo(map)
-.bindPopup(`
-<b>🔴 Verónica</b><br>
-10 Tiendas<br><br>
-Encuentro Oceanía<br>
-Plaza Aeropuerto<br>
-Parque Tepeyac<br>
-TAPO<br>
-Bosques de Aragón<br>
-y más...
-`);
-
-/* YAZMÍN CHABELA */
-L.marker([19.5106,-99.2333]).addTo(map)
+/* CHABELA */
+var chabela = L.marker([19.5106,-99.2333],{icon:iconChabela}).addTo(mapa)
 .bindPopup(`
 <b>🟣 Yazmín Chabela</b><br>
 13 Tiendas<br><br>
-Satélite<br>
-Periférico Satélite DT<br>
-Echegaray<br>
-Plaza Satélite<br>
-El Rosario<br>
-Parque Toreo<br>
-4 Caminos<br>
-y más...
+38117 Satélite<br>
+38176 Periférico Satélite DT<br>
+38197 Echegaray<br>
+38427 Plaza Satélite<br>
+38458 El Rosario<br>
+38475 Satélite Centro Cívico<br>
+38561 Parque Toreo<br>
+38590 Parque Toreo II<br>
+38656 Viveros de la Loma<br>
+38695 Cetram 4 Caminos<br>
+38770 Gustavo Baz 29<br>
+38859 Plaza Satélite II N1<br>
+43152 Samara Satélite
 `);
+puntos.push(chabela);
+
+/* VANESSA */
+var vanessa = L.marker([19.4864,-99.1306],{icon:iconVanessa}).addTo(mapa)
+.bindPopup(`
+<b>🟠 Vanessa</b><br>
+14 Tiendas<br><br>
+38205 Lindavista<br>
+38207 Lindavista II<br>
+38371 Montevideo DT<br>
+38411 Torres Lindavista<br>
+38527 Camarones<br>
+38546 Patio Clavería<br>
+38651 Vía Vallejo<br>
+38677 Patio La Raza<br>
+38719 Plaza Fortuna<br>
+38837 Centenario Azcapotzalco<br>
+43111 Montevideo Insurgentes<br>
+43132 Plaza Vista Norte<br>
+43194 Atana Lindavista<br>
+43195 Parque Jardín Kiosko
+`);
+puntos.push(vanessa);
+
+/* VERÓNICA */
+var vero = L.marker([19.4401,-99.0941],{icon:iconVero}).addTo(mapa)
+.bindPopup(`
+<b>🔴 Verónica</b><br>
+10 Tiendas<br><br>
+38431 Eduardo Molina<br>
+38529 Bosques de Aragón<br>
+38811 Plaza Tepeyac<br>
+38903 Encuentro Oceanía<br>
+38924 Plaza Aeropuerto<br>
+38930 Blvd. Aeropuerto DT<br>
+38937 Parque Tepeyac Piso 1<br>
+38965 Parque Tepeyac Piso 2<br>
+38992 TAPO Puerta Oriente<br>
+38995 Encuentro Oceanía II
+`);
+puntos.push(vero);
+
+/* HAYDEE */
+var haydee = L.marker([19.5491,-99.2744],{icon:iconHaydee}).addTo(mapa)
+.bindPopup(`
+<b>🟩 Haydee</b><br>
+13 Tiendas<br><br>
+38115 Zona Azul<br>
+38119 Lomas Verdes<br>
+38142 Zona Esmeralda<br>
+38149 Bellavista<br>
+38266 San Mateo<br>
+38270 Lomas Verdes II<br>
+38363 Galerías Atizapán<br>
+38394 CC Lomas Verdes<br>
+38507 Espacio Vista del Valle<br>
+38535 City Center Esmeralda<br>
+38925 Star Médica Lomas Verdes<br>
+43043 Atizapán<br>
+43130 Town Center Nicolás Romero
+`);
+puntos.push(haydee);
+
+/* CÍRCULOS EJECUTIVOS POR PORTAFOLIO */
+L.circle([19.6320,-99.1257],{color:'#00704A',fillColor:'#00704A',fillOpacity:.08,radius:9000}).addTo(mapa);
+L.circle([19.5599,-99.2201],{color:'#2563EB',fillColor:'#2563EB',fillOpacity:.08,radius:8500}).addTo(mapa);
+L.circle([19.5106,-99.2333],{color:'#7C3AED',fillColor:'#7C3AED',fillOpacity:.08,radius:8500}).addTo(mapa);
+L.circle([19.4864,-99.1306],{color:'#F97316',fillColor:'#F97316',fillOpacity:.08,radius:8500}).addTo(mapa);
+L.circle([19.4401,-99.0941],{color:'#DC2626',fillColor:'#DC2626',fillOpacity:.08,radius:8500}).addTo(mapa);
+L.circle([19.5491,-99.2744],{color:'#22C55E',fillColor:'#22C55E',fillOpacity:.08,radius:8500}).addTo(mapa);
+
+var grupo = L.featureGroup(puntos);
+mapa.fitBounds(grupo.getBounds().pad(0.25));
 
 </script>
 
