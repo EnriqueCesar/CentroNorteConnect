@@ -73,5 +73,21 @@ function showPerson(id){const p=PEOPLE.find(x=>slug(x.name)===id);if(!p)return;d
 function showGallery(){document.getElementById("gallery").style.display="block";document.getElementById("presentation").classList.remove("active");document.getElementById("slideMount").innerHTML="";history.replaceState(null,"",location.pathname)}
 drawGallery();if(location.hash)showPerson(location.hash.slice(1));
 </script>
-</body>
+</body>  
+  <a href="regional-review.html" style="
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 9999;
+  background: #006241;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+">
+← Regresar a Regional Review
+</a>
 </html>
