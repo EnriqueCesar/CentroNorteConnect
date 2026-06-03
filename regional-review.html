@@ -259,6 +259,18 @@ family:["Mamá Georgina","4 hermanos","Esposo Ramón","Kenya y Diego"],
 hobbies:["Naturaleza","Creatividad","Familia"]
 }
 ];
+ PEOPLE.forEach(p=>{
+  p.phrase = p.phrase || "Enfoque en personas, resultados y experiencia.";
+  p.career = p.career || "Administración";
+  p.yearsBrand = p.yearsBrand || "—";
+  p.yearsRole = p.yearsRole || "—";
+  p.partner = p.partner || {Rolling:"—",IPLH:"—",TPLH:"—",Labor:"—","Dif Labor":""};
+  p.client = p.client || {NPS:"—","Conexión":"—","Desempeño":"—",Bebida:"—"};
+  p.business = p.business || {"Ventas vs ppto":"—","Dif vs ppto":"",OMT:"—",Costo:"—","Costo Dif":"",EBITDA:"—","EBITDA Dif":"","DT Time":"—"};
+  p.gallup = p.gallup || ["1","2","3","4","5"];
+  p.family = p.family || ["Familia"];
+  p.hobbies = p.hobbies || ["Café"];
+}); 
 
 function esc(s){return (s??"").toString().replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
 function slug(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
