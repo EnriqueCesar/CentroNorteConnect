@@ -329,7 +329,10 @@ return `<div class="slide">
 <aside class="photo-panel">
 <img class="logo-mini" src="img/icono-centro-norte.png" alt="Logo">
 <img class="person-photo" src="${esc(p.image)}" alt="${esc(p.name)}">
-<div class="name-box"><h2>${esc(p.name)}</h2><div class="role-pill">HRBP</div></div>
+<div class="name-box">
+<h2>${esc(p.name)}</h2>
+<div class="role-pill">${esc(p.role)}</div>
+</div>
 <div class="quote-card">“ ${esc(p.phrase)} ”
 <div class="small-line">🎓 ${esc(p.career)}</div>
 <div class="small-line">☕ ${esc(p.yearsBrand)} años en Starbucks</div>
