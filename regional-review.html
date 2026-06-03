@@ -73,5 +73,11 @@ function showPerson(id){const p=PEOPLE.find(x=>slug(x.name)===id);if(!p)return;d
 function showGallery(){document.getElementById("gallery").style.display="block";document.getElementById("presentation").classList.remove("active");document.getElementById("slideMount").innerHTML="";history.replaceState(null,"",location.pathname)}
 drawGallery();if(location.hash)showPerson(location.hash.slice(1));
 </script>
+<a href="regional-review.html" class="btn-regresar">
+← Regresar a Regional Review
+</a>
+
+<!-- Todo tu contenido -->
+
 </body>
 </html>
