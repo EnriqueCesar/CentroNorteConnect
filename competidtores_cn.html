@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Competidores CN | Centro Norte Connect</title>
+  <title>Mapa de Competidores | Centro Norte Connect</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
@@ -19,10 +19,10 @@
   </style>
 </head>
 <body>
-<a class="back" href="index.html">← Menú Principal</a>
+<a class="back" href="index.html">← Regresar al Menú Principal</a>
 <header>
   <div style="font-size:30px">☕📍</div>
-  <h1>Competidores CN</h1>
+  <h1>Mapa de Competidores CN</h1>
   <p>Radio competitivo de 1.0 km a 2.0 km por tienda Starbucks · Región Centro Norte</p>
   <div class="legend"><span class="pill">⭐ Starbucks</span><span class="pill">🔴 Tim Hortons</span><span class="pill">🔵 Cielito Querido</span><span class="pill">🟤 Tierra Garat</span><span class="pill">🟣 Pickup</span><span class="pill">🟠 Otros</span></div>
 </header>
@@ -46,8 +46,7 @@ function applyFilters(){currentRows=buildRows();storeLayer.clearLayers();compLay
 function renderTable(){tbody.innerHTML=currentRows.map(r=>`<tr><td><b>${r.store.cc}</b><br>${r.store.name}</td><td><span class="tag">${r.store.dm}</span></td><td>${r.comp.name}</td><td><span class="tag ${r.comp.brand==='Tim Hortons'?'priority':''}">${r.comp.brand}</span></td><td><b>${r.dist.toFixed(2)}</b></td><td>${r.comp.rating??'—'}</td><td><a target="_blank" href="${r.store.link}">SB</a> · <a target="_blank" href="${r.comp.link}">Comp</a></td></tr>`).join('') || '<tr><td colspan="7">Sin resultados con los filtros actuales.</td></tr>';}
 function updateKpis(){kStores.textContent=new Set(currentRows.map(r=>r.store.cc)).size;kComps.textContent=new Set(currentRows.map(r=>r.comp.name+r.comp.lat)).size;kPairs.textContent=currentRows.length;kPriority.textContent=currentRows.filter(r=>r.comp.brand==='Tim Hortons').length;kAvg.textContent=currentRows.length?(currentRows.reduce((a,r)=>a+r.dist,0)/currentRows.length).toFixed(2)+' km':'-';}
 function fitAll(){const pts=[];storeLayer.eachLayer(l=>pts.push(l.getLatLng()));compLayer.eachLayer(l=>pts.push(l.getLatLng()));if(pts.length)map.fitBounds(L.latLngBounds(pts),{padding:[25,25]})}
-function downloadCSV(){const header=['CC','Starbucks','DM','Competidor','Marca','Latitud Competidor','Longitud Competidor','Km','Calificacion','Link Starbucks','Link Competidor'];const lines=[header.join(',')].concat(currentRows.map(r=>[r.store.cc,r.store.name,r.store.dm,r.comp.name,r.comp.brand,r.comp.lat,r.comp.lng,r.dist.toFixed(3),r.comp.rating??'',r.store.link,r.comp.link].map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')));const blob=new Blob([lines.join('
-')],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='competidores_cn.csv';a.click();}
+function downloadCSV(){const header=['CC','Starbucks','DM','Competidor','Marca','Latitud Competidor','Longitud Competidor','Km','Calificacion','Link Starbucks','Link Competidor'];const lines=[header.join(',')].concat(currentRows.map(r=>[r.store.cc,r.store.name,r.store.dm,r.comp.name,r.comp.brand,r.comp.lat,r.comp.lng,r.dist.toFixed(3),r.comp.rating??'',r.store.link,r.comp.link].map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')));const blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8;'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='competidores_cn.csv';a.click();}
 window.addEventListener('load',init);
 </script>
 </body></html>
