@@ -24,43 +24,31 @@
 <div class="brand"><img src="img/icono-centro-norte.png" alt="CN Connect"><div><h1>Centro Norte Connect</h1><p>Navega. Analiza. Decide.</p></div></div>
 <a class="navbtn" href="index.html">🏠 Inicio</a>
 <button class="navbtn active" onclick="showGallery()">📈 Regional Review</button>
-<section id="presentation" class="presentation">
-<div class="controls">
-
-<button class="control-btn"
-onclick="showGallery()">
-← Ver todos
-</button>
-
-<button class="control-btn primary"
-onclick="window.print()">
-Imprimir / Guardar PDF
-</button>
-
-</div>
-
-<div id="slideMount"></div>
-</section>
 <div class="quote"><b>“</b>Nuestro propósito<br><br>“Con cada taza inspiramos conexión humana.”</div>
 <div class="sidefoot">💚 #OrgulloCN | ☕ #GreenApronService<br>Conectando tiendas, partners y decisiones.</div>
 </aside>
+
 <main class="main">
 <div class="topbar"><div class="title"><h2>Regional Review</h2><p>Presentaciones del Equipo Directivo</p></div><div class="chips"><div class="chip">🏪 72 Tiendas</div><div class="chip">👥 6 Distritos</div><div class="chip">🚗 6 Drive Thru</div><div class="chip">📍 CDMX + Edo. Mex.</div></div></div>
 <div class="content">
 <section id="gallery" class="center">
 <div class="intro"><h3>👥 Selecciona un integrante para ver su presentación</h3><p>Información Enero - Abril 2026.</p></div>
-<div class="actions-row">
-<a class="action-link primary"
-href="Plan_Accion_Centro_Norte.html"
-target="_blank">
-📎 Abrir Plan de Acción Regional
-</a>
-</div>
+<div class="actions-row"><a class="action-link primary" href="Plan_Accion_Centro_Norte.html" target="_blank">📎 Abrir Plan de Acción Regional</a></div>
 <div class="people-grid" id="peopleGrid"></div>
 <a class="back-main" href="index.html">← Regresar al Menú Principal</a>
 </section>
-<section id="presentation" class="presentation"><div class="controls"><button class="control-btn" onclick="showGallery()">← Ver todos</button><a class="control-btn" href="Plan_Accion_Centro_Norte.html" target="_blank">📎 Plan de Acción</a><button class="control-btn primary" onclick="window.print()">Imprimir / Guardar PDF</button></div><div id="slideMount"></div></section>
-</div></main></div>
+
+<section id="presentation" class="presentation">
+<div class="controls">
+<button class="control-btn" onclick="showGallery()">← Ver todos</button>
+<button class="control-btn primary" onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+<div id="slideMount"></div>
+</section>
+</div>
+</main>
+</div>
+
 <script>
 const PEOPLE=[
 {name:"Jorge Antonio Alcantar Aguiar",role:"Director Regional",type:"leader",image:"img/jorge-alcantar.png",phrase:"Creo en el poder de las personas, la disciplina en los detalles y la mejora continua para crear experiencias extraordinarias.",career:"Lic. Administración de Empresas",yearsBrand:"15",yearsRole:"0.8",partner:{Rolling:"34.1%",IPLH:"15.1",TPLH:"6.4",Labor:"15.5%","Dif Labor":"-0.03 pp"},client:{NPS:"69.4","Conexión":"50.9%","Desempeño":"63.1%",Bebida:"61.3%"},business:{"Ventas vs ppto":"48.5M","Dif vs ppto":"-4.7%",OMT:"-23.3",Costo:"36.3%","Costo Dif":"+0.3 pp",EBITDA:"21.6%","EBITDA Dif":"-0.4 pp","DT Time":"01:26:19"},gallup:["Estratégico","Responsabilidad","Restaurador","Conexión","Mando"],family:["Marisa","André","Leonardo"],hobbies:["Música","Tecnología","IA","Excel","Familia"]},
