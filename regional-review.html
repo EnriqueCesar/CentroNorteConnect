@@ -295,7 +295,10 @@ return `<div class="pill-item"><div class="round">${icon}</div><strong>${esc(val
 function slideLeader(p){
 return `<div class="slide">
 <aside class="photo-panel">
-<img class="logo-mini" src="img/icono-centro-norte.png" alt="Logo">
+<img class="logo-mini"
+     src="img/icono-centro-norte.png"
+     alt="Logo"
+     style="display:none;">
 <img class="person-photo" src="${esc(p.image)}" alt="${esc(p.name)}">
 <div class="name-box"><h2>${esc(p.name)}</h2><p>${esc(p.role)}</p><div class="role-pill">${esc(p.role==="Director Regional"?"Director Regional":"Gerente de Distrito")}</div></div>
 <div class="quote-card">“ ${esc(p.phrase)} ”
