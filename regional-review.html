@@ -103,7 +103,7 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7f6;color:va
 <div class="chips">
 <div class="chip">🏪 72 Tiendas</div>
 <div class="chip">👥 6 Distritos</div>
-<div class="chip">🚗 5 Drive Thru</div>
+<div class="chip">🚗 6 Drive Thru</div>
 <div class="chip">📍 CDMX + Edo. Mex.</div>
 </div>
 </div>
@@ -300,8 +300,7 @@ return `<div class="slide">
      alt="Logo"
      style="display:none;">
 <img class="person-photo" src="${esc(p.image)}" alt="${esc(p.name)}">
-<div class="name-box"><h2>${esc(p.name)}</h2><p>${esc(p.role)}</p><div class="role-pill">${esc(p.role==="Director Regional"?"Director Regional":"Gerente de Distrito")}</div></div>
-<div class="quote-card">“ ${esc(p.phrase)} ”
+<div class="name-box"><h2>${esc(p.name)}</h2><div class="role-pill">${esc(role)}</div></div><div class="quote-card">“ ${esc(p.phrase)} ”
 <div class="small-line">🎓 ${esc(p.career)}</div>
 <div class="small-line">☕ ${esc(p.yearsBrand)} años en Starbucks</div>
 <div class="small-line">💼 ${esc(p.yearsRole)} años posición actual</div>
@@ -331,7 +330,7 @@ return `<div class="slide">
 <aside class="photo-panel">
 <img class="logo-mini" src="img/icono-centro-norte.png" alt="Logo">
 <img class="person-photo" src="${esc(p.image)}" alt="${esc(p.name)}">
-<div class="name-box"><h2>${esc(p.name)}</h2><p>HRBP</p><div class="role-pill">HRBP</div></div>
+<div class="name-box"><h2>${esc(p.name)}</h2><div class="role-pill">HRBP</div></div>
 <div class="quote-card">“ ${esc(p.phrase)} ”
 <div class="small-line">🎓 ${esc(p.career)}</div>
 <div class="small-line">☕ ${esc(p.yearsBrand)} años en Starbucks</div>
