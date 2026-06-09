@@ -27,7 +27,32 @@
   <div class="legend"><span class="pill">⭐ Starbucks</span><span class="pill">🔴 Tim Hortons</span><span class="pill">🔵 Cielito Querido</span><span class="pill">🟤 Tierra Garat</span><span class="pill">🟣 Pickup</span><span class="pill">🟠 Otros</span></div>
 </header>
 <div class="wrap"><section class="panel">
-  <div class="kpis"><div class="kpi"><b id="kStores">72</b><span>Starbucks totales</span></div><div class="kpi"><b id="kComps">0</b><span>Competidores con coordenada</span></div><div class="kpi"><b id="kPairs">0</b><span>Matches en radio</span></div><div class="kpi"><b id="kPriority">0</b><span>Prioridad Tim Hortons</span></div><div class="kpi"><b id="kAvg">-</b><span>Distancia promedio</span></div></div>
+  <div class="kpis">
+  <div class="kpi">
+    <b id="kStores">72</b>
+    <span>Starbucks Totales</span>
+  </div>
+
+  <div class="kpi">
+    <b id="kPairs">0</b>
+    <span>Matches Competitivos</span>
+  </div>
+
+  <div class="kpi">
+    <b id="kPriority">0</b>
+    <span>Tim Hortons Cercanos</span>
+  </div>
+
+  <div class="kpi">
+    <b id="kNoComp">0</b>
+    <span>Sin Competidor Cercano</span>
+  </div>
+
+  <div class="kpi">
+    <b id="kCoverage">0%</b>
+    <span>Cobertura Tim Hortons</span>
+  </div>
+</div>
   <div class="filters"><input id="q" placeholder="Buscar Starbucks, competidor, CC o DM..."/><select id="radius"><option value="2">Radio máximo: 2.0 km</option><option value="1">Radio máximo: 1.0 km</option><option value="1.5">Radio máximo: 1.5 km</option></select><select id="brand"><option value="">Todas las marcas</option></select><select id="dm"><option value="">Todos los DM</option></select><button onclick="applyFilters()">Actualizar</button></div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><button class="secondary" onclick="fitAll()">🗺 Ver todo</button></div>
   <div class="grid"><div id="map"></div><div class="tableWrap"><table><thead><tr><th>Starbucks</th><th>Competidor</th><th>Marca</th><th>Km</th><th>Links</th></tr></thead><tbody id="tbody"></tbody></table></div></div>
