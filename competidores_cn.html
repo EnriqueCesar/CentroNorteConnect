@@ -69,7 +69,35 @@ function init(){map=L.map('map').setView([19.53,-99.17],11);L.tileLayer('https:/
 function buildRows(){const rmax=+radius.value, br=brand.value, dmv=dm.value, query=q.value.toLowerCase().trim();let rows=[];STORES.forEach(s=>{if(dmv&&s.dm!==dmv)return;COMPETITORS.forEach(c=>{if(c.lat==null||c.lng==null)return;if(br&&c.brand!==br)return;const dist=km(s.lat,s.lng,c.lat,c.lng);if(dist<=rmax){const text=`${s.cc} ${s.name} ${s.dm} ${c.name} ${c.brand}`.toLowerCase();if(query&&!text.includes(query))return;rows.push({store:s,comp:c,dist})}})});return rows.sort((a,b)=>a.dist-b.dist||a.store.name.localeCompare(b.store.name));}
 function applyFilters(){currentRows=buildRows();storeLayer.clearLayers();compLayer.clearLayers();lineLayer.clearLayers();circleLayer.clearLayers();const rmax=+radius.value;const usedStores=new Map(), usedComps=new Map();currentRows.forEach(row=>{usedStores.set(row.store.cc,row.store);usedComps.set(row.comp.name+row.comp.lat,row.comp);});usedStores.forEach(s=>{L.circle([s.lat,s.lng],{radius:rmax*1000,color:'#006241',weight:1,fillOpacity:.03}).addTo(circleLayer);L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:'<div class="starIcon">S</div>',iconSize:[28,28],iconAnchor:[14,14]})}).bindPopup(`<b>Starbucks ${s.cc}</b><br>${s.name}<br>DM: ${s.dm}<br><a target="_blank" href="${s.link}">Abrir Maps</a>`).addTo(storeLayer)});usedComps.forEach(c=>{L.marker([c.lat,c.lng],{icon:L.divIcon({className:'',html:`<div class="compIcon ${compClass(c.brand)}">${c.brand[0]}</div>`,iconSize:[24,24],iconAnchor:[12,12]})}).bindPopup(`<b>${c.name}</b><br>${c.brand}<br><a target="_blank" href="${c.link}">Abrir Maps</a>`).addTo(compLayer)});currentRows.slice(0,250).forEach(r=>L.polyline([[r.store.lat,r.store.lng],[r.comp.lat,r.comp.lng]],{color:r.comp.brand==='Tim Hortons'?'#c8102e':'#7a8a83',weight:1,opacity:.35}).addTo(lineLayer));renderTable();updateKpis();}
 function renderTable(){tbody.innerHTML=currentRows.map(r=>`<tr><td><b>${r.store.cc}</b><br>${r.store.name}</td><td>${r.comp.name}</td><td><span class="tag ${r.comp.brand==='Tim Hortons'?'priority':''}">${r.comp.brand}</span></td><td><b>${r.dist.toFixed(2)}</b></td><td><a target="_blank" href="${r.store.link}">SB</a> · <a target="_blank" href="${r.comp.link}">Comp</a></td></tr>`).join('') || '<tr><td colspan="5">Sin resultados con los filtros actuales.</td></tr>'; }
-function updateKpis(){kStores.textContent=STORES.length;kComps.textContent=new Set(currentRows.map(r=>r.comp.name+r.comp.lat)).size;kPairs.textContent=currentRows.length;kPriority.textContent=currentRows.filter(r=>r.comp.brand==='Tim Hortons').length;kAvg.textContent=currentRows.length?(currentRows.reduce((a,r)=>a+r.dist,0)/currentRows.length).toFixed(2)+' km':'-';}
+function updateKpis(){
+
+  kStores.textContent = STORES.length;
+
+  kPairs.textContent = currentRows.length;
+
+  const timStores = new Set(
+    currentRows
+      .filter(r => r.comp.brand === 'Tim Hortons')
+      .map(r => r.store.cc)
+  );
+
+  kPriority.textContent = timStores.size;
+
+  const storesWithCompetitor = new Set(
+    currentRows.map(r => r.store.cc)
+  );
+
+  kNoComp.textContent =
+    STORES.length - storesWithCompetitor.size;
+
+  const coverage =
+    STORES.length
+      ? ((timStores.size / STORES.length) * 100)
+      : 0;
+
+  kCoverage.textContent =
+    coverage.toFixed(0) + '%';
+}
 function fitAll(){const pts=[];storeLayer.eachLayer(l=>pts.push(l.getLatLng()));compLayer.eachLayer(l=>pts.push(l.getLatLng()));if(pts.length)map.fitBounds(L.latLngBounds(pts),{padding:[25,25]})}
 window.addEventListener('load',init);
 </script>
