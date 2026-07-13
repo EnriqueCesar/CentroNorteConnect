@@ -69,23 +69,23 @@ a{color:inherit}
 .menu-header{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:10px 0 16px}
 .menu-header h2{margin:0;color:var(--green-dark);font-size:1.35rem}
 .menu-header p{margin:5px 0 0;color:var(--muted);font-size:.92rem}
-.filter-menu{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filter-menu{display:none}
 .filter-button{
   appearance:none;border:1px solid var(--line);background:var(--white);color:var(--green-dark);
   border-radius:999px;padding:9px 14px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;
 }
 .filter-button:hover,.filter-button:focus-visible{border-color:var(--green);outline:none}
 .filter-button[aria-pressed="true"]{background:var(--green-soft);border-color:#b8decf;color:var(--green)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
 .option{
-  display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:16px;
+  display:grid;grid-template-columns:92px 1fr auto;align-items:center;gap:16px;
   text-decoration:none;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:16px;min-height:112px;transition:border-color .18s ease,background-color .18s ease,transform .18s ease;
+  padding:18px 20px;min-height:132px;transition:border-color .18s ease,background-color .18s ease,transform .18s ease;
 }
 .option:hover,.option:focus-visible{border-color:var(--green);background:#fbfdfc;transform:translateY(-2px);outline:none}
 .option[hidden]{display:none}
-.option-visual{width:72px;height:72px;border-radius:16px;background:var(--green-pale);border:1px solid #e2ece7;display:grid;place-items:center;overflow:hidden}
-.option-visual img{width:100%;height:100%;object-fit:cover}
+.option-visual{width:92px;height:92px;border-radius:50%;background:#fff;border:1px solid #d7e5df;display:grid;place-items:center;overflow:hidden;padding:7px}
+.option-visual img{width:100%;height:100%;object-fit:contain;border-radius:50%;background:#fff}
 .option-visual svg{width:34px;height:34px;fill:none;stroke:var(--green);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .option-content{text-align:left;min-width:0}
 .option-eyebrow{display:block;color:var(--muted);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
@@ -137,7 +137,7 @@ a{color:inherit}
       </div>
     </div>
 
-    <nav class="filter-menu" aria-label="Filtrar experiencias">
+    <nav class="filter-menu" aria-label="Filtrar experiencias" hidden>
       <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Todas</button>
       <button class="filter-button" type="button" data-filter="operacion" aria-pressed="false">Operación</button>
       <button class="filter-button" type="button" data-filter="estrategia" aria-pressed="false">Estrategia</button>
@@ -146,19 +146,19 @@ a{color:inherit}
 
     <div class="grid" id="experience-grid">
       <a class="option" data-category="operacion" href="https://www.google.com/maps/d/viewer?mid=1qJtSehevuovcJfWayveTAnfQ9rFEdVM&ll=19.55483070376722%2C-99.17139930825385&z=11" target="_blank" rel="noopener noreferrer">
-        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 6 5-2 8 3 5-2v13l-5 2-8-3-5 2Z"/><path d="M8 4v13M16 7v13"/></svg></span>
+        <span class="option-visual" aria-hidden="true"><img src="img/vista-operativa.jpeg" alt=""></span>
         <span class="option-content"><span class="option-eyebrow">Ubicación y cobertura</span><h3>Vista Operativa</h3><p>Google Maps interactivo para navegación y lectura territorial.</p></span>
         <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
       </a>
 
       <a class="option" data-category="estrategia" href="https://enriquecesar.github.io/Mapa_CentroNorte/" target="_blank" rel="noopener noreferrer">
-        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"/></svg></span>
+        <span class="option-visual" aria-hidden="true"><img src="img/vista-ejecutiva.jpeg" alt=""></span>
         <span class="option-content"><span class="option-eyebrow">Análisis regional</span><h3>Vista Ejecutiva</h3><p>Mapa ejecutivo para priorización y ruta de decisiones.</p></span>
         <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
       </a>
 
       <a class="option" data-category="resultados" href="regional-review.html">
-        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16"/><path d="m7 15 4-4 3 2 5-6"/></svg></span>
+        <span class="option-visual" aria-hidden="true"><img src="img/regional-review.jpeg" alt=""></span>
         <span class="option-content"><span class="option-eyebrow">Desempeño regional</span><h3>Regional Review</h3><p>Resultados, tendencias e indicadores clave de la región.</p></span>
         <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
       </a>
@@ -170,7 +170,7 @@ a{color:inherit}
       </a>
 
       <a class="option" data-category="resultados" href="https://enriquecesar.github.io/CeNtro-Partner/" target="_blank" rel="noopener noreferrer">
-        <span class="option-visual" aria-hidden="true"><img src="img/centro-partner.png" alt=""></span>
+        <span class="option-visual" aria-hidden="true"><img src="img/centro-partner-white.png" alt=""></span>
         <span class="option-content"><span class="option-eyebrow">Partners y operación</span><h3>CeNtro Partner</h3><p>Ranking regional de indicadores Partner, Cliente y Negocio.</p></span>
         <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
       </a>
@@ -183,17 +183,7 @@ a{color:inherit}
   </section>
 </main>
 <script>
-(function(){
-  const buttons=[...document.querySelectorAll('.filter-button')];
-  const options=[...document.querySelectorAll('.option[data-category]')];
-  buttons.forEach(button=>{
-    button.addEventListener('click',()=>{
-      const filter=button.dataset.filter;
-      buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
-      options.forEach(option=>{ option.hidden=filter!=='all' && option.dataset.category!==filter; });
-    });
-  });
-})();
+// Menú de experiencias sin filtros visibles.
 </script>
 </body>
 </html>
