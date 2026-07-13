@@ -3,249 +3,197 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Centro Norte Connect</title>
-
 <link rel="icon" type="image/png" href="icono-centro-norte.png">
 <link rel="apple-touch-icon" href="icono-centro-norte.png">
 <link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#00704A">
+<meta name="theme-color" content="#006241">
 <meta name="application-name" content="Centro Norte Connect">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Centro Norte Connect">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="description" content="Centro Norte Connect: acceso rápido a vista operativa y ejecutiva de la Región Centro Norte.">
-
+<meta name="description" content="Centro Norte Connect: acceso ejecutivo a herramientas operativas, regionales y de partners de la Región Centro Norte.">
 <style>
+:root{
+  --green:#006241;
+  --green-dark:#003b2b;
+  --green-soft:#dff3ea;
+  --green-pale:#f1f8f5;
+  --white:#ffffff;
+  --surface:#f5f7f6;
+  --line:#dce5e1;
+  --text:#17211d;
+  --muted:#5e6b65;
+  --radius-xl:28px;
+  --radius-lg:20px;
+  --radius-md:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:linear-gradient(135deg,#f4f4f4,#e8f3ee);
-    text-align:center;
-    color:#1e1e1e;
+  margin:0;
+  font-family:Inter,"Segoe UI",Aptos,Arial,sans-serif;
+  background:var(--surface);
+  color:var(--text);
 }
-
+a{color:inherit}
 .hero{
-    background:#00704A;
-    color:white;
-    padding:45px 20px 35px;
-    border-bottom-left-radius:35px;
-    border-bottom-right-radius:35px;
+  background:var(--green);
+  color:var(--white);
+  padding:34px 20px 72px;
+  text-align:center;
 }
-
-.hero h1{
-    font-size:42px;
-    margin:10px 0;
+.hero-mark{
+  width:48px;height:48px;margin:0 auto 12px;
+  display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:50%;
 }
-
-.hero p{
-    font-size:20px;
-    margin:8px 0;
+.hero-mark svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8}
+.hero h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0 0 12px;letter-spacing:-.03em}
+.hero .lead{font-size:clamp(1rem,2.5vw,1.2rem);margin:0 0 8px;font-weight:700}
+.hero .tagline{font-size:.95rem;max-width:720px;margin:0 auto;color:#e6f3ee}
+.hero .hashtags{margin-top:14px;font-size:.84rem;font-weight:700;color:#d3eee4}
+.shell{max-width:1120px;margin:-44px auto 44px;padding:0 20px}
+.panel{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius-xl);
+  padding:28px;
 }
-
-.tagline{
-    font-size:17px;
-    opacity:.95;
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.summary-item{background:var(--green-pale);border:1px solid #e4eee9;border-radius:var(--radius-md);padding:14px 16px;text-align:left}
+.summary-label{display:block;color:var(--muted);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.summary-value{color:var(--green);font-size:1rem;font-weight:800}
+.menu-header{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:10px 0 16px}
+.menu-header h2{margin:0;color:var(--green-dark);font-size:1.35rem}
+.menu-header p{margin:5px 0 0;color:var(--muted);font-size:.92rem}
+.filter-menu{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filter-button{
+  appearance:none;border:1px solid var(--line);background:var(--white);color:var(--green-dark);
+  border-radius:999px;padding:9px 14px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;
 }
-
-.hashtags{
-    margin-top:15px;
-    font-size:15px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:850px;
-    margin:-30px auto 40px;
-    padding:0 20px;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    border-radius:24px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
-
-.kpis{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.kpi{
-    background:#f1f8f5;
-    color:#00704A;
-    padding:12px 18px;
-    border-radius:14px;
-    font-weight:bold;
-}
-
-.instruccion{
-    background:#f1f8f5;
-    color:#00704A;
-    padding:12px 18px;
-    border-radius:14px;
-    margin-bottom:22px;
-    font-size:15px;
-    font-weight:600;
-    display:inline-block;
-}
-
+.filter-button:hover,.filter-button:focus-visible{border-color:var(--green);outline:none}
+.filter-button[aria-pressed="true"]{background:var(--green-soft);border-color:#b8decf;color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .option{
-    display:block;
-    text-decoration:none;
-    color:#1e1e1e;
-    background:#f8f8f8;
-    margin:18px 0;
-    padding:22px;
-    border-radius:18px;
-    border:2px solid transparent;
-    transition:.2s;
+  display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:16px;
+  text-decoration:none;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:16px;min-height:112px;transition:border-color .18s ease,background-color .18s ease,transform .18s ease;
 }
-
-.option:hover{
-    border-color:#00704A;
-    transform:scale(1.02);
+.option:hover,.option:focus-visible{border-color:var(--green);background:#fbfdfc;transform:translateY(-2px);outline:none}
+.option[hidden]{display:none}
+.option-visual{width:72px;height:72px;border-radius:16px;background:var(--green-pale);border:1px solid #e2ece7;display:grid;place-items:center;overflow:hidden}
+.option-visual img{width:100%;height:100%;object-fit:cover}
+.option-visual svg{width:34px;height:34px;fill:none;stroke:var(--green);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.option-content{text-align:left;min-width:0}
+.option-eyebrow{display:block;color:var(--muted);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.option h3{margin:0 0 5px;color:var(--green);font-size:1.08rem}
+.option p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.4}
+.option-arrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--green)}
+.option-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8}
+.footer{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.82rem;line-height:1.7}
+.footer strong{color:var(--green)}
+@media(max-width:760px){
+  .hero{padding:28px 18px 66px}
+  .shell{padding:0 12px}
+  .panel{padding:20px;border-radius:22px}
+  .summary{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .menu-header{align-items:flex-start;flex-direction:column}
 }
-
-.icon{
-    font-size:34px;
+@media(max-width:440px){
+  .option{grid-template-columns:58px 1fr auto;padding:13px;gap:12px}
+  .option-visual{width:58px;height:58px;border-radius:13px}
+  .option p{font-size:.8rem}
 }
-
-.option h2{
-    margin:8px 0 5px;
-    color:#00704A;
-    font-size:24px;
-}
-
-.option p{
-    margin:0;
-    font-size:16px;
-    color:#555;
-}
-
-.footer{
-    margin-top:25px;
-    font-size:14px;
-    color:#666;
-    line-height:1.6;
-}
-
-@media(max-width:600px){
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .card{
-        padding:25px 18px;
-    }
-
-    .instruccion{
-        font-size:14px;
-    }
-
-}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.option{transition:none}}
 </style>
 </head>
-
 <body>
+<header class="hero">
+  <div class="hero-mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg>
+  </div>
+  <h1>Centro Norte Connect</h1>
+  <p class="lead">Navega. Analiza. Decide.</p>
+  <p class="tagline">Conectando tiendas, partners y decisiones para una ejecución consistente.</p>
+  <div class="hashtags">#OrgulloCN &nbsp;·&nbsp; #GreenApronService</div>
+</header>
 
-<div class="hero">
-
-    <div style="font-size:45px;">📍</div>
-
-    <h1>Centro Norte Connect</h1>
-
-    <p>🚀 Navega. Analiza. Decide.</p>
-
-    <div class="tagline">
-        Conectando tiendas, partners y decisiones para una ejecución consistente.
+<main class="shell">
+  <section class="panel" aria-labelledby="menu-title">
+    <div class="summary" aria-label="Resumen regional">
+      <div class="summary-item"><span class="summary-label">Región</span><span class="summary-value">Centro Norte</span></div>
+      <div class="summary-item"><span class="summary-label">Cobertura</span><span class="summary-value">72 tiendas</span></div>
+      <div class="summary-item"><span class="summary-label">Estructura</span><span class="summary-value">6 distritos</span></div>
     </div>
 
-    <div class="hashtags">
-        💚 #OrgulloCN &nbsp;&nbsp;|&nbsp;&nbsp; ☕ #GreenApronService
+    <div class="menu-header">
+      <div>
+        <h2 id="menu-title">Centro de experiencias</h2>
+        <p>Selecciona una herramienta según la decisión que necesitas tomar.</p>
+      </div>
     </div>
 
-</div>
+    <nav class="filter-menu" aria-label="Filtrar experiencias">
+      <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Todas</button>
+      <button class="filter-button" type="button" data-filter="operacion" aria-pressed="false">Operación</button>
+      <button class="filter-button" type="button" data-filter="estrategia" aria-pressed="false">Estrategia</button>
+      <button class="filter-button" type="button" data-filter="resultados" aria-pressed="false">Resultados</button>
+    </nav>
 
-<div class="container">
+    <div class="grid" id="experience-grid">
+      <a class="option" data-category="operacion" href="https://www.google.com/maps/d/viewer?mid=1qJtSehevuovcJfWayveTAnfQ9rFEdVM&ll=19.55483070376722%2C-99.17139930825385&z=11" target="_blank" rel="noopener noreferrer">
+        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 6 5-2 8 3 5-2v13l-5 2-8-3-5 2Z"/><path d="M8 4v13M16 7v13"/></svg></span>
+        <span class="option-content"><span class="option-eyebrow">Ubicación y cobertura</span><h3>Vista Operativa</h3><p>Google Maps interactivo para navegación y lectura territorial.</p></span>
+        <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      </a>
 
-    <div class="card">
+      <a class="option" data-category="estrategia" href="https://enriquecesar.github.io/Mapa_CentroNorte/" target="_blank" rel="noopener noreferrer">
+        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"/></svg></span>
+        <span class="option-content"><span class="option-eyebrow">Análisis regional</span><h3>Vista Ejecutiva</h3><p>Mapa ejecutivo para priorización y ruta de decisiones.</p></span>
+        <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      </a>
 
-        <div class="kpis">
-            <div class="kpi">🟢 Región Centro Norte</div>
-            <div class="kpi">🏪 72 Tiendas</div>
-            <div class="kpi">👥 6 Distritos</div>
-        </div>
+      <a class="option" data-category="resultados" href="regional-review.html">
+        <span class="option-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16"/><path d="m7 15 4-4 3 2 5-6"/></svg></span>
+        <span class="option-content"><span class="option-eyebrow">Desempeño regional</span><h3>Regional Review</h3><p>Resultados, tendencias e indicadores clave de la región.</p></span>
+        <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      </a>
 
-        <div class="instruccion">
-            👇 Elige una experiencia
-        </div>
+      <a class="option" data-category="resultados" href="https://enriquecesar.github.io/Boost_CN/" target="_blank" rel="noopener noreferrer">
+        <span class="option-visual" aria-hidden="true"><img src="img/boost-cn.png" alt=""></span>
+        <span class="option-content"><span class="option-eyebrow">Impulso comercial</span><h3>Boost CN</h3><p>Seguimiento ejecutivo de iniciativas y resultados comerciales.</p></span>
+        <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      </a>
 
-        <a class="option"
-           href="https://www.google.com/maps/d/viewer?mid=1qJtSehevuovcJfWayveTAnfQ9rFEdVM&ll=19.55483070376722%2C-99.17139930825385&z=11">
-
-            <div class="icon">🗺️</div>
-
-            <h2>Vista Operativa</h2>
-
-            <p>
-                Google Maps interactivo para ubicación, cobertura y navegación.
-            </p>
-
-        </a>
-
-        <a class="option"
-           href="https://enriquecesar.github.io/Mapa_CentroNorte/">
-
-            <div class="icon">📊</div>
-
-            <h2>Vista Ejecutiva</h2>
-
-            <p>
-                Mapa ejecutivo para análisis regional y ruta de decisiones.
-            </p>
-
-        </a>
-
-        <a class="option"
-           href="regional-review.html">
-
-            <div class="icon">📈</div>
-
-            <h2>Regional Review</h2>
-
-            <p>
-                Resultados, tendencias e indicadores clave de la Región Centro Norte.
-            </p>
-
-        </a>
-
-        <div class="footer">
-
-            <strong>
-                💚 #OrgulloCN &nbsp;&nbsp;|&nbsp;&nbsp; ☕ #GreenApronService
-            </strong>
-
-            <br><br>
-
-            Conectando tiendas, partners y decisiones.
-
-            <br><br>
-
-            Starbucks Centro Norte · Una Región · Una Ruta · Una Decisión
-
-        </div>
-
+      <a class="option" data-category="resultados" href="https://enriquecesar.github.io/CeNtro-Partner/" target="_blank" rel="noopener noreferrer">
+        <span class="option-visual" aria-hidden="true"><img src="img/centro-partner.png" alt=""></span>
+        <span class="option-content"><span class="option-eyebrow">Partners y operación</span><h3>CeNtro Partner</h3><p>Ranking regional de indicadores Partner, Cliente y Negocio.</p></span>
+        <span class="option-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      </a>
     </div>
 
-</div>
-
+    <footer class="footer">
+      <strong>#OrgulloCN &nbsp;·&nbsp; #GreenApronService</strong><br>
+      Starbucks Centro Norte · Una Región · Una Ruta · Una Decisión
+    </footer>
+  </section>
+</main>
+<script>
+(function(){
+  const buttons=[...document.querySelectorAll('.filter-button')];
+  const options=[...document.querySelectorAll('.option[data-category]')];
+  buttons.forEach(button=>{
+    button.addEventListener('click',()=>{
+      const filter=button.dataset.filter;
+      buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      options.forEach(option=>{ option.hidden=filter!=='all' && option.dataset.category!==filter; });
+    });
+  });
+})();
+</script>
 </body>
 </html>
