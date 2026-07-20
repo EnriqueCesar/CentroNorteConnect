@@ -1,4 +1,4 @@
-const VERSION = "centro-norte-connect-v2";
+const VERSION = "centro-norte-connect-v3";
 const CORE = [
   "./", "./index.html", "./regional-review.html", "./competidores_cn.html",
   "./Plan_Accion_Centro_Norte.html", "./offline.html", "./app.css", "./app.js",
