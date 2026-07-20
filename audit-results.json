@@ -1,0 +1,13 @@
+{
+  "html_files_checked": 5,
+  "files_checked": 29,
+  "broken_local_references": [],
+  "external_blank_without_safe_rel": [],
+  "duplicate_file_groups": [],
+  "duplicate_function_names": [],
+  "unreferenced_image_candidates": [
+    "img/centro-partner.png"
+  ],
+  "manifest_error": null,
+  "status": "ok"
+}

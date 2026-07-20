@@ -2,12 +2,15 @@
   "name": "Centro Norte Connect",
   "short_name": "CN Connect",
   "description": "Centro Norte Connect",
-  "start_url": "/CentroNorteConnect/",
-  "scope": "/CentroNorteConnect/",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f7f6",
   "theme_color": "#006241",
-  "orientation": "portrait",
+  "orientation": "any",
+  "lang": "es-MX",
+  "categories": ["business", "productivity"],
   "icons": [
     {
       "src": "icono-centro-norte.png",
